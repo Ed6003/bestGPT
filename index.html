@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input Form</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    .container {
+        text-align: center;
+    }
+    input[type="text"] {
+        padding: 10px;
+        margin: 5px;
+        width: 200px;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>bestest AI, does whatever u need</h1>
+    <input type="text" id="textInput" placeholder="Type here...">
+    <button onclick="submitText()">ask it</button>
+</div>
+
+<script>
+    
+
+function submitText() {
+    var userInput = document.getElementById("textInput").value;
+
+    // Create the image element
+    var img = document.createElement("img");
+    img.src = "bruh.jpeg"; // Replace "image.png" with the filename of your PNG file
+    img.style.position = "fixed";
+    img.style.top = 0;
+    img.style.left = 0;
+    img.style.width = "100%";
+    img.style.height = "100%";
+    img.style.zIndex = 9999;
+    img.style.opacity = 0;
+    img.style.transition = "opacity 2s, transform 2s";
+
+    // Add the image to the document
+    document.body.appendChild(img);
+
+    // Trigger reflow to apply initial styles
+    void img.offsetWidth;
+
+    // Fade in and spin the image
+    setTimeout(function() {
+        img.style.opacity = 1;
+        img.style.transform = "rotate(360deg)";
+    }, 100);
+
+    // Create the text element
+    var text = document.createElement("div");
+    text.textContent = "I don't even know bruh";
+    text.style.position = "fixed";
+    text.style.top = "50%";
+    text.style.left = "50%";
+    text.style.transform = "translate(-50%, -50%)";
+    text.style.color = "black";
+    text.style.fontSize = "90px";
+    text.style.fontFamily = "Arial, sans-serif";
+    text.style.zIndex = 10000;
+
+    // Add the text to the document
+    document.body.appendChild(text);
+}
+
+
+</script>
+</body>
+</html>
