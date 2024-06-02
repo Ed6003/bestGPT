@@ -4,154 +4,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Input Form</title>
+<title>Simple Website</title>
 <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-    }
-    .container {
-        text-align: center;
-    }
-    input[type="text"] {
-        padding: 10px;
-        margin: 5px;
-        width: 200px;
-    }
-    button {
-        padding: 10px 20px;
-        margin: 5px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
+    /* Style for the image */
+    #ed {
+        position: absolute;
+        width: 100vw; /* 75% of the viewport width */
+        height: 70vh; /* 50% of the viewport height */
+        top: 0;
+        left: 0;
     }
 </style>
 </head>
 <body>
-<div class="container">
-    <h1>bestest AI, does whatever u need</h1>
-    <input type="text" id="textInput" placeholder="Type here...">
-    <button onclick="submitText()">ask it</button>
-</div>
-
+<audio id="audio" autoplay loop>
+    <source src="wide.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+<img id="ed" src="bruh.jpeg" alt="Ed">
 <script>
-
-function submitText() {
-    var userInput = document.getElementById("textInput").value;
-
-    // Create the image element
-    var img = document.createElement("img");
-    img.src = "bruh.jpeg";
-    img.style.position = "fixed";
-    img.style.top = 0;
-    img.style.left = 0;
-    img.style.width = "100%";
-    img.style.height = "100%";
-    img.style.zIndex = 9999;
-    img.style.opacity = 0;
-    img.style.transition = "opacity 2s, transform 2s";
-    img.style.cursor = "move";
-    img.style.pointerEvents = "auto";
-
-    // Add event listeners for dragging
-    img.addEventListener("mousedown", startDrag);
-    img.addEventListener("mouseup", endDrag);
-
-    // Add the image to the document
-    document.body.appendChild(img);
-
-    // Trigger reflow to apply initial styles
-    void img.offsetWidth;
-
-    // Fade in and spin the image
-    setTimeout(function() {
-        img.style.opacity = 1;
-        img.style.transform = "rotate(360deg)";
-    }, 100);
-
-    // Create the text element
-    var text = document.createElement("div");
-    text.textContent = "I don't even know bruh";
-    text.style.position = "fixed";
-    text.style.top = "50%";
-    text.style.left = "50%";
-    text.style.transform = "translate(-50%, -50%)";
-    text.style.color = "black";
-    text.style.fontSize = "80px";
-    text.style.fontFamily = "Arial, sans-serif";
-    text.style.zIndex = 10000;
-    text.style.opacity = 0;
-    text.style.textShadow = "0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 10px white";
-    text.style.transition = "opacity 2s";
-
-    // Add the text to the document after 2 seconds
-    setTimeout(function() {
-        document.body.appendChild(text);
-        // Trigger reflow to apply initial styles
-        void text.offsetWidth;
-        text.style.opacity = 1;
-    }, 2000);
-
-    // Create a timeout to remove the elements after 10 seconds
-    setTimeout(function() {
-        img.style.opacity = 0;
-        text.style.opacity = 0;
-        // Remove the elements from the document after fading out
-        setTimeout(function() {
-            document.body.removeChild(img);
-            document.body.removeChild(text);
-        }, 2000);
-        setTimeout(function() {
-              notSusAtAll();
-        }, 1000);
-      }, 8000);
-
-    // Function to start dragging
-    function startDrag(event) {
-        event.preventDefault();
-        this.style.cursor = "grabbing";
-        this.style.transition = "none";
-        this.style.zIndex = 10000;
-        this.style.position = "absolute";
-        this.style.opacity = 0.7;
-        this.style.left = event.clientX - this.offsetWidth / 2 + "px";
-        this.style.top = event.clientY - this.offsetHeight / 2 + "px";
-        document.addEventListener("mousemove", drag);
+    // Function to move the image randomly around the screen
+    function moveEd() {
+        var ed = document.getElementById('ed');
+        var screenWidth = window.innerWidth;
+        var screenHeight = window.innerHeight;
+        var randomX = Math.floor(Math.random() * (screenWidth - 500));
+        var randomY = Math.floor(Math.random() * (screenHeight - 500));
+        ed.style.top = randomY + 'px';
+        ed.style.left = randomX + 'px';
     }
 
-    // Function to end dragging
-    function endDrag() {
-        this.style.cursor = "move";
-        this.style.transition = "opacity 0.3s";
-        this.style.zIndex = 9999;
-        this.style.position = "fixed";
-        this.style.opacity = 1;
-        document.removeEventListener("mousemove", drag);
-    }
-
-    // Function to drag the image
-    function drag(event) {
-        event.preventDefault();
-        this.style.left = event.clientX - this.offsetWidth / 2 + "px";
-        this.style.top = event.clientY - this.offsetHeight / 2 + "px";
-    }
-}
-
-function notSusAtAll() {
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            var ipAddress = data.ip;
-            alert("My name is Walter Hartwell White. I live at " + ipAddress);
-        })
-        .catch(error => {
-            console.error('Error fetching IP address:', error);
-        });
-}
+    // Call the moveEd function every second (1000 milliseconds)
+    setInterval(moveEd, 1000);
 </script>
 </body>
 </html>
+
