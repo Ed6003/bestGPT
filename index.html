@@ -1,42 +1,25 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simple Website</title>
-<style>
-    /* Style for the image */
-    #ed {
-        position: absolute;
-        width: 100vw; /* 75% of the viewport width */
-        height: 70vh; /* 50% of the viewport height */
-        top: 0;
-        left: 0;
-    }
-</style>
+  <meta charset="utf-8">
+  <title>particles.js</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
 </head>
 <body>
-<audio id="audio" autoplay loop>
-    <source src="wide.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-<img id="ed" src="bruh.jpeg" alt="Ed">
-<script>
-    // Function to move the image randomly around the screen
-    function moveEd() {
-        var ed = document.getElementById('ed');
-        var screenWidth = window.innerWidth;
-        var screenHeight = window.innerHeight;
-        var randomX = Math.floor(Math.random() * (screenWidth - 500));
-        var randomY = Math.floor(Math.random() * (screenHeight - 500));
-        ed.style.top = randomY + 'px';
-        ed.style.left = randomX + 'px';
-    }
 
-    // Call the moveEd function every second (1000 milliseconds)
-    setInterval(moveEd, 1000);
-</script>
+<!-- particles.js container -->
+<div id="particles-js"></div> <!-- stats - count particles -->
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <!-- stats.js lib -->
+<script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+<!-- scripts -->
+<script src="../particles.js"></script>
+<script src="js/app.js"></script>
+
+<!-- stats.js -->
+<script src="js/lib/stats.js"></script>
+
 </body>
 </html>
-
